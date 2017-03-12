@@ -1,4 +1,4 @@
-import readConfig
+import readConfig as config
 
-settings = readConfig.getConfigSection('twitter')
+settings = config.getConfigSection('twitter')
 print(settings['consumerKey'])
