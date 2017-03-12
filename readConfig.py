@@ -2,9 +2,9 @@ import json
 configFile = 'config.json'
 
 def getConfigSection(section):
-    with open('config.json') as json_data_file:
-        data = json.load(json_data_file)
-    return data[section]
+    with open(configFile) as jsonDataFile:
+        return json.load(jsonDataFile)[section]
+
 
 
 print(getConfigSection('twitter'))
