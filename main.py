@@ -1,4 +1,6 @@
-import readConfig as config
+import readConfig
 
-settings = config.getConfigSection('twitter')
-print(settings['consumerKey'])
+
+settings = readConfig.ConfigSettings('config.json')
+print(settings.SearchQuery)
+print(settings.ConsumerKey)
