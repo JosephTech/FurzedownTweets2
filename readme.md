@@ -11,3 +11,9 @@ Started with config settings - looking at alternatives to config.ini which seems
 20170313
 Wrapped config settings in a class and exposed settings as properties - pass json file name to constructor
 Created a basic unit test
+
+TODO
+- user blacklist
+- word blacklist
+- retrieve and store last tweet id
+- wrapper round tweepy api
