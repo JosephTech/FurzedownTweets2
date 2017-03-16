@@ -13,7 +13,6 @@ Wrapped config settings in a class and exposed settings as properties - pass jso
 Created a basic unit test
 
 TODO
-- user blacklist
-- word blacklist
 - retrieve and store last tweet id
 - wrapper round tweepy api
+- can we set path variable so we dont need to explicitly state path to config files etc?

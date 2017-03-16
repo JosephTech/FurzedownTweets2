@@ -2,12 +2,12 @@ import readConfig
 import readList
 
 
-settings = readConfig.ConfigSettings('config.json')
+settings = readConfig.ConfigSettings('./config/config.json')
 print(settings.SearchQuery)
 print(settings.ConsumerKey)
 
-bannedUsers = readList.getList('users.txt')
+bannedUsers = readList.getList('./config/users.txt')
 print(bannedUsers)
 
-bannedWords = readList.getList('words.txt')
+bannedWords = readList.getList('./config/words.txt')
 print(bannedWords)
