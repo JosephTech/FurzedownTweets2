@@ -18,6 +18,6 @@ Unit Tests - how to declare setup method
 Config - how to update a setting in the config file
 
 TODO
-- retrieve and store last tweet id
 - wrapper round tweepy api
 - can we set path variable so we dont need to explicitly state path to config files etc?
+- How do we mock tweets for testing twitter API without calling twitter

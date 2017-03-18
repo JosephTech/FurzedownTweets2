@@ -23,3 +23,12 @@ class Wrapper:
 
     def FilterBannedUsers(self, tweets, bannedUsers):
         return list(filter(lambda status: status.author.screen_name not in bannedUsers, tweets))
+
+    def FilterMultipleHashTags(self, tweets, maxHashTags):
+        return list(filter(lambda status: status.text.count('#') <= maxHashTags, tweets))
+
+
+    def Process(self, tweet):
+        # iterate the timeline and retweet
+        # only allow tweets with 3 or less hashtags
+        print(tweet.text)

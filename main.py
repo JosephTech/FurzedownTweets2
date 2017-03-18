@@ -20,10 +20,11 @@ def main():
     latestTweets = t.FilterReplies(latestTweets)
     latestTweets = t.FilterBannedUsers(latestTweets, bannedUsers)
     latestTweets = t.FilterBannedWords(latestTweets, bannedWords)
+    latestTweets = t.FilterMultipleHashTags(latestTweets, 3)
     latestTweets.reverse()
 
     for tweet in latestTweets:
-        print(tweet.text)
+        t.Process(tweet)
 
 if __name__ == '__main__':
     main()
