@@ -1,6 +1,6 @@
 import tweepy
 
-class Twitter:
+class Wrapper:
 
     def __init__(self, consumer_key, consumer_secret, access_token, access_token_secret):
         auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -9,11 +9,9 @@ class Twitter:
 
 
     def LatestTweets(self, searchString, lastId):
-        latestTweets = tweepy.Cursor(self.api.search, q=searchString, since_id=lastId, lang='en').items()
+        searchResults = tweepy.Cursor(self.api.search, q=searchString, since_id=lastId, lang='en').items()
+        latestTweets = []
+        for result in searchResults:
+            latestTweets.append(result)
         return latestTweets
 
-
-
-#timelineIterator = tweepy.Cursor(api.search, q=hashtag, since_id=lastid, lang=tweetLanguage).items()
-
-#https://twitter.com/TootingEaters/status/843125330013569025
