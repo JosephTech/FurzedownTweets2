@@ -9,9 +9,17 @@ class Wrapper:
 
 
     def LatestTweets(self, searchString, lastId):
-        searchResults = tweepy.Cursor(self.api.search, q=searchString, since_id=lastId, lang='en').items()
-        latestTweets = []
+        searchResults = tweepy.Cursor(self.api.search, q=searchString, since_id=lastId, lang='en').items(10)
+        latestTweets = list()
         for result in searchResults:
             latestTweets.append(result)
         return latestTweets
 
+    def FilterReplies(self, tweets):
+        return list(filter(lambda status: status.text[0] != "@", tweets))
+
+    def FilterBannedWords(self, tweets, bannedWords):
+        return list(filter(lambda status: not any(word in status.text.split() for word in bannedWords), tweets))
+
+    def FilterBannedUsers(self, tweets, bannedUsers):
+        return list(filter(lambda status: status.author.screen_name not in bannedUsers, tweets))

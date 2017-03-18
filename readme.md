@@ -15,6 +15,7 @@ Created a basic unit test
 20170318
 Started wrapper class for Tweepy API
 Unit Tests - how to declare setup method
+Config - how to update a setting in the config file
 
 TODO
 - retrieve and store last tweet id

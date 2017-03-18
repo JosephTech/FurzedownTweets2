@@ -12,7 +12,11 @@ class ReadConfigTests(unittest.TestCase):
 
     def test_UpdateLastTweetId(self):
         settings = readConfig.ConfigSettings('../config/config.json')
-        settings.UpdateLastTweetId(999999)
+        lastTweetId = settings.LastTweetId
+        updatedId = lastTweetId + 1
+        settings.UpdateLastTweetId(updatedId)
+        updatedId = settings.LastTweetId
+        self.assertTrue(updatedId == lastTweetId + 1)
 
 
 class ReadListTests(unittest.TestCase):

@@ -30,6 +30,10 @@ class ConfigSettings:
     def AccessTokenSecret(self):
         return self.getConfigSection('twitter')['accessTokenSecret']
 
+    @property
+    def LastTweetId(self):
+        return self.getConfigSection('twitter')['lastTweetId']
+
     def UpdateLastTweetId(self, lastTweetId):
         with open(self.configFile, "r+") as jsonDataFile:
             config = json.load(jsonDataFile)
