@@ -6,5 +6,6 @@ def getList(fileName):
             lines.append(line)
         return lines
 
-#print(getList('users.txt'))
-#print(getList('words.txt'))
+if __name__ == "__main__":
+    print(getList('./config/users.txt'))
+    print(getList('./config/words.txt'))

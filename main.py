@@ -1,7 +1,6 @@
 import readConfig
 import readList
 
-
 settings = readConfig.ConfigSettings('./config/config.json')
 print(settings.SearchQuery)
 print(settings.ConsumerKey)

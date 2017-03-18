@@ -12,6 +12,9 @@ Started with config settings - looking at alternatives to config.ini which seems
 Wrapped config settings in a class and exposed settings as properties - pass json file name to constructor
 Created a basic unit test
 
+20170318
+Started wrapper class for Tweepy API
+
 TODO
 - retrieve and store last tweet id
 - wrapper round tweepy api

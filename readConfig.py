@@ -1,6 +1,6 @@
 import json
 
-class ConfigSettings(object):
+class ConfigSettings:
 
     def __init__(self, configfile):
         self.configFile = configfile
@@ -23,7 +23,7 @@ class ConfigSettings(object):
         return self.getConfigSection('twitter')['consumerSecret']
 
     @property
-    def AccessTokenS(self):
+    def AccessToken(self):
         return self.getConfigSection('twitter')['accessToken']
 
     @property
