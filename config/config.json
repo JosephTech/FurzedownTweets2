@@ -8,6 +8,7 @@
     "consumerKey":"cSYkBqjCn3guShoKBWgPAw",
     "consumerSecret":"3MGC50I5YQE1Gvn2oMmmHBEZ63l9fhfBN5CzF6N4Hs",
     "accessToken":"2426052648-TpCpdTOF6BJQzFpCcLT9Q1VrfcAMWCpvgNrUXQz",
-    "accessTokenSecret":"WktfldtfEytG3DnuPplseXCYYa5BArtM8EDubqmJR1lL8"
+    "accessTokenSecret":"WktfldtfEytG3DnuPplseXCYYa5BArtM8EDubqmJR1lL8",
+    "lastTweetId":0
   }
 }
