@@ -6,7 +6,7 @@ class ConfigSettings:
         self.configFile = configfile
 
     def getConfigSection(self, section):
-        with open(self.configFile) as jsonDataFile:
+        with open(self.configFile, 'r') as jsonDataFile:
             return json.load(jsonDataFile)[section]
 
     #abstract plain string config identifiers away from main.py
@@ -30,3 +30,10 @@ class ConfigSettings:
     def AccessTokenSecret(self):
         return self.getConfigSection('twitter')['accessTokenSecret']
 
+    def UpdateLastTweetId(self, lastTweetId):
+        with open(self.configFile, "r+") as jsonDataFile:
+            config = json.load(jsonDataFile)
+            config['twitter']['lastTweetId'] = lastTweetId
+            jsonDataFile.write(json.dumps(config))
+        with open(self.configFile, "w") as jsonFile:
+            json.dump(config, jsonFile)

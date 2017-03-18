@@ -10,6 +10,11 @@ class ReadConfigTests(unittest.TestCase):
         settings = readConfig.ConfigSettings('../config/config.json')
         self.assertEqual(settings.SearchQuery,'#furzedown OR #tooting')
 
+    def test_UpdateLastTweetId(self):
+        settings = readConfig.ConfigSettings('../config/config.json')
+        settings.UpdateLastTweetId(999999)
+
+
 class ReadListTests(unittest.TestCase):
 
    def test_GetUserList(self):
