@@ -24,3 +24,4 @@ TODO
 - dm new followers
 - error handling - eg rate limit hit etc
 - initialise last tweet id on first run (start with 0)
+- test
