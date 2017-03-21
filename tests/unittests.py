@@ -46,11 +46,11 @@ class TwitterInterfaceTests(unittest.TestCase):
         print(user.followers_count)
         self.assertTrue(user.followers_count > 0)
 
-    def test_TwitterSearch(self):
-        tweets = self._twitter.LatestTweets('#furzedown OR #tooting', 843125330013569025)
-        for tweet in tweets:
-            print(tweet.text)
-        self.assertTrue(len(tweets) > 0)
+    #def test_TwitterSearch(self):
+    #    tweets = self._twitter.LatestTweets('#furzedown OR #tooting', 843125330013569025)
+    #    for tweet in tweets:
+    #        print(tweet.text)
+    #    self.assertTrue(len(tweets) > 0)
 
     def test_InitialiseLatestTweetId(self):
         id = self._twitter.InitialiseLatestTweetId(1, '#furzedown OR #tooting')
@@ -58,8 +58,8 @@ class TwitterInterfaceTests(unittest.TestCase):
 
     def test_FilterReplies(self):
         tweets = list()
-        tweets.append(MockTweet('@this is a reply', 'jules'))
-        tweets.append( MockTweet('this is not a reply', 'jules'))
+        tweets.append(mocks.status('@this is a reply', 'jules'))
+        tweets.append(mocks.status('this is not a reply', 'jules'))
 
         latestTweets = self._twitter.FilterReplies(tweets)
 
@@ -68,8 +68,8 @@ class TwitterInterfaceTests(unittest.TestCase):
 
     def test_FilterBannedUsers(self):
         tweets = list()
-        tweets.append(MockTweet('this is a reply', 'jules'))
-        tweets.append(MockTweet('this is not a reply', 'lucifer'))
+        tweets.append(mocks.status('this is a reply', 'jules'))
+        tweets.append(mocks.status('this is not a reply', 'lucifer'))
 
         bannedUsers = list()
         bannedUsers.append('lucifer')
@@ -83,8 +83,8 @@ class TwitterInterfaceTests(unittest.TestCase):
 
     def test_FilterBannedWords(self):
         tweets = list()
-        tweets.append(MockTweet('what a load of bollocks', 'jules'))
-        tweets.append(MockTweet('this is not a reply', 'lucifer'))
+        tweets.append(mocks.status('what a load of bollocks', 'jules'))
+        tweets.append(mocks.status('this is not a reply', 'lucifer'))
 
         bannedWords = list()
         bannedWords.append('bollocks')
@@ -98,8 +98,8 @@ class TwitterInterfaceTests(unittest.TestCase):
 
     def test_FilterMultipleHashTags(self):
         tweets = list()
-        tweets.append(MockTweet('#tooting #furzedown #paris #boston', 'jules'))
-        tweets.append(MockTweet('#tooting #hello', 'lucifer'))
+        tweets.append(mocks.status('#tooting #furzedown #paris #boston', 'jules'))
+        tweets.append(mocks.status('#tooting #hello', 'lucifer'))
 
         latestTweets = self._twitter.FilterMultipleHashTags(tweets, 3)
 

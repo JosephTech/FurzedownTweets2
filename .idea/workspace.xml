@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d1d7c68-c85c-4318-bd43-0ed9ca971121" name="Default" comment="Add filter for tweets with multiple hashtags">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/mocks.py" />
+    <list default="true" id="4d1d7c68-c85c-4318-bd43-0ed9ca971121" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/tests/mocks.py" afterPath="$PROJECT_DIR$/mocks.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/config.json" afterPath="$PROJECT_DIR$/config/config.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/unittests.py" afterPath="$PROJECT_DIR$/tests/unittests.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/twitter.py" afterPath="$PROJECT_DIR$/twitter.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,11 +35,11 @@
       <file leaf-file-name="unittests.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/unittests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state relative-caret-position="72">
+              <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-                <marker date="1490139188057" expanded="true" signature="974:1865" ph="..." />
+                <marker date="1490139467659" expanded="true" signature="974:1870" ph="..." />
               </folding>
             </state>
           </provider>
@@ -89,7 +86,7 @@
         </entry>
       </file>
       <file leaf-file-name="mocks.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/mocks.py">
+        <entry file="file://$PROJECT_DIR$/mocks.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="198">
               <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
@@ -234,54 +231,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Jules\Documents\GitHub\ReTweeter" />
       <recent name="C:\Users\Jules\Documents\GitHub\FurzedownTweets2\config" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittest TwitterInterfaceTests.test_FilterMultipleHashTags">
-    <configuration default="false" name="Unittests in unittests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="C:\Python\Python36\python.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ReTweeter" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/unittests.py" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittest TwitterInterfaceTests.test_FilterReplies" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ReTweeter" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/unittests.py" />
-      <option name="CLASS_NAME" value="TwitterInterfaceTests" />
-      <option name="METHOD_NAME" value="test_FilterReplies" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_METHOD" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python tests.Unittests in unittests">
     <configuration default="false" name="Unittest TwitterInterfaceTests.test_FilterBannedUsers" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -341,6 +295,50 @@
       <option name="METHOD_NAME" value="test_FilterMultipleHashTags" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in TwitterInterfaceTests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ReTweeter" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/unittests.py" />
+      <option name="CLASS_NAME" value="TwitterInterfaceTests" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in unittests" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="ReTweeter" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/unittests.py" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
@@ -547,19 +545,19 @@
       <item index="0" class="java.lang.String" itemvalue="Python.main" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in ReadConfigTests (1)" />
       <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest ReadConfigTests.test_GetSearchQuery" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in unittests" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterReplies" />
-      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterBannedUsers" />
-      <item index="6" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterBannedWords" />
-      <item index="7" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterMultipleHashTags" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterBannedUsers" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterBannedWords" />
+      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterMultipleHashTags" />
+      <item index="6" class="java.lang.String" itemvalue="Python tests.Unittests in TwitterInterfaceTests" />
+      <item index="7" class="java.lang.String" itemvalue="Python tests.Unittests in unittests" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterMultipleHashTags" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterBannedWords" />
-        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterBannedUsers" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterReplies" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in unittests" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in unittests" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in TwitterInterfaceTests" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterMultipleHashTags" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterBannedWords" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TwitterInterfaceTests.test_FilterBannedUsers" />
       </list>
     </recent_temporary>
   </component>
@@ -668,19 +666,17 @@
       <option name="project" value="LOCAL" />
       <updated>1489863556739</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Adding mocks for tweet statuses and tests for filters">
+      <created>1490139226121</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1490139226121</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_TwitterInterfaceTests_test_FilterBannedUsers - 2017.03.21 at 23h 25m 52s.xml">
-      <configuration name="Unittest TwitterInterfaceTests.test_FilterBannedUsers" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittest_TwitterInterfaceTests_test_FilterBannedUsers - 2017.03.21 at 23h 26m 02s.xml">
-      <configuration name="Unittest TwitterInterfaceTests.test_FilterBannedUsers" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittest_TwitterInterfaceTests_test_FilterBannedWords - 2017.03.21 at 23h 27m 38s.xml">
-      <configuration name="Unittest TwitterInterfaceTests.test_FilterBannedWords" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittest_TwitterInterfaceTests_test_FilterMultipleHashTags - 2017.03.21 at 23h 29m 17s.xml">
       <configuration name="Unittest TwitterInterfaceTests.test_FilterMultipleHashTags" configurationId="tests" />
     </history-entry>
@@ -702,6 +698,15 @@
     <history-entry file="Unittest_TwitterInterfaceTests_test_FilterMultipleHashTags - 2017.03.21 at 23h 30m 29s.xml">
       <configuration name="Unittest TwitterInterfaceTests.test_FilterMultipleHashTags" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_in_TwitterInterfaceTests - 2017.03.21 at 23h 37m 35s.xml">
+      <configuration name="Unittests in TwitterInterfaceTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_TwitterInterfaceTests - 2017.03.21 at 23h 37m 58s.xml">
+      <configuration name="Unittests in TwitterInterfaceTests" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_unittests - 2017.03.21 at 23h 38m 05s.xml">
+      <configuration name="Unittests in unittests" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -716,7 +721,7 @@
     <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12090813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12090813" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32827735" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34669557" sideWeight="0.3347413" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -753,7 +758,8 @@
     <MESSAGE value="Store id of last tweet processed in json config file" />
     <MESSAGE value="Added filtering and blocking" />
     <MESSAGE value="Add filter for tweets with multiple hashtags" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add filter for tweets with multiple hashtags" />
+    <MESSAGE value="Adding mocks for tweet statuses and tests for filters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding mocks for tweet statuses and tests for filters" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -784,7 +790,7 @@
           <caret line="55" column="8" lean-forward="false" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1490139188057" expanded="true" signature="974:1865" ph="..." />
+            <marker date="1490139467659" expanded="true" signature="974:1870" ph="..." />
           </folding>
         </state>
       </provider>
@@ -837,7 +843,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1490139188057" expanded="true" signature="974:1865" ph="..." />
+            <marker date="1490139467659" expanded="true" signature="974:1870" ph="..." />
           </folding>
         </state>
       </provider>
@@ -873,7 +879,7 @@
           <caret line="14" column="39" lean-forward="true" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1490139188057" expanded="true" signature="974:1865" ph="..." />
+            <marker date="1490139467659" expanded="true" signature="974:1870" ph="..." />
           </folding>
         </state>
       </provider>
@@ -938,7 +944,7 @@
           <caret line="10" column="39" lean-forward="true" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1490139188057" expanded="true" signature="974:1865" ph="..." />
+            <marker date="1490139467659" expanded="true" signature="974:1870" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1003,7 +1009,7 @@
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1490139188057" expanded="true" signature="974:1865" ph="..." />
+            <marker date="1490139467659" expanded="true" signature="974:1870" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1137,7 +1143,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/mocks.py">
+    <entry file="file://$PROJECT_DIR$/mocks.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
@@ -1147,11 +1153,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/unittests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="72">
+          <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
-            <marker date="1490139188057" expanded="true" signature="974:1865" ph="..." />
+            <marker date="1490139467659" expanded="true" signature="974:1870" ph="..." />
           </folding>
         </state>
       </provider>
