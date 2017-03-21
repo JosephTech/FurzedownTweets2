@@ -2,7 +2,8 @@ import unittest
 import readConfig
 import readList
 import twitter
-import mocks
+from tests import mocks
+
 
 class ReadConfigTests(unittest.TestCase):
 
