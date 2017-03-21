@@ -9,7 +9,7 @@ class Wrapper:
 
 
     def LatestTweets(self, searchString, lastId):
-        searchResults = tweepy.Cursor(self.api.search, q=searchString, since_id=lastId, lang='en').items(10)
+        searchResults = tweepy.Cursor(self.api.search, q=searchString, since_id=lastId, lang='en').items()
         latestTweets = list()
         for result in searchResults:
             latestTweets.append(result)
@@ -32,3 +32,17 @@ class Wrapper:
         # iterate the timeline and retweet
         # only allow tweets with 3 or less hashtags
         print(tweet.text)
+
+    def InitialiseLatestTweetId(self, lastTweetId, searchString):
+        """when first running, we dont want to get every tweet since the dawn of time!"""
+        if lastTweetId==0:
+            searchResults = tweepy.Cursor(self.api.search, q=searchString, lang='en').items(1)
+            latestTweets = list()
+            for result in searchResults:
+                latestTweets.append(result)
+
+            return latestTweets[0].id
+
+        return lastTweetId
+
+

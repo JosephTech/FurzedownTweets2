@@ -2,7 +2,7 @@ import unittest
 import readConfig
 import readList
 import twitter
-
+import mocks
 
 class ReadConfigTests(unittest.TestCase):
 
@@ -51,5 +51,66 @@ class TwitterInterfaceTests(unittest.TestCase):
         for tweet in tweets:
             print(tweet.text)
         self.assertTrue(len(tweets) > 0)
+
+    def test_InitialiseLatestTweetId(self):
+        id = self._twitter.InitialiseLatestTweetId(1, '#furzedown OR #tooting')
+        print(id)
+
+    def test_FilterReplies(self):
+        tweets = list()
+        tweets.append(MockTweet('@this is a reply', 'jules'))
+        tweets.append( MockTweet('this is not a reply', 'jules'))
+
+        latestTweets = self._twitter.FilterReplies(tweets)
+
+        self.assertTrue(len(latestTweets) == 1)
+        self.assertTrue(latestTweets[0].text == 'this is not a reply')
+
+    def test_FilterBannedUsers(self):
+        tweets = list()
+        tweets.append(MockTweet('this is a reply', 'jules'))
+        tweets.append(MockTweet('this is not a reply', 'lucifer'))
+
+        bannedUsers = list()
+        bannedUsers.append('lucifer')
+
+        latestTweets = self._twitter.FilterBannedUsers(tweets, bannedUsers)
+
+        self.assertTrue(len(latestTweets) == 1)
+        self.assertTrue(latestTweets[0].author.screen_name == 'jules')
+        for tweet in latestTweets:
+            print(tweet.author.screen_name)
+
+    def test_FilterBannedWords(self):
+        tweets = list()
+        tweets.append(MockTweet('what a load of bollocks', 'jules'))
+        tweets.append(MockTweet('this is not a reply', 'lucifer'))
+
+        bannedWords = list()
+        bannedWords.append('bollocks')
+
+        latestTweets = self._twitter.FilterBannedWords(tweets, bannedWords)
+
+        self.assertTrue(len(latestTweets) == 1)
+        self.assertTrue(latestTweets[0].text == 'this is not a reply')
+        for tweet in latestTweets:
+            print(tweet.text)
+
+    def test_FilterMultipleHashTags(self):
+        tweets = list()
+        tweets.append(MockTweet('#tooting #furzedown #paris #boston', 'jules'))
+        tweets.append(MockTweet('#tooting #hello', 'lucifer'))
+
+        latestTweets = self._twitter.FilterMultipleHashTags(tweets, 3)
+
+        self.assertTrue(len(latestTweets) == 1)
+        self.assertTrue(latestTweets[0].text == '#tooting #hello')
+        for tweet in latestTweets:
+            print(tweet.text)
+
+
+
+
+
 
 

@@ -13,9 +13,13 @@ def main():
                                 consumer_key=settings.ConsumerKey,
                                 consumer_secret=settings.ConsumerSecret)
 
-    latestTweets = t.LatestTweets(settings.SearchQuery, settings.LastTweetId)
 
-    last_tweet_id = str(latestTweets[0].id)
+    lastTweetId = t.InitialiseLatestTweetId(settings.LastTweetId, settings.SearchQuery)
+    print(lastTweetId)
+
+    latestTweets = t.LatestTweets(settings.SearchQuery, lastTweetId)
+
+    latestTweetId = str(latestTweets[0].id)
 
     latestTweets = t.FilterReplies(latestTweets)
     latestTweets = t.FilterBannedUsers(latestTweets, bannedUsers)
@@ -25,6 +29,8 @@ def main():
 
     for tweet in latestTweets:
         t.Process(tweet)
+
+    settings.UpdateLastTweetId(latestTweetId)
 
 if __name__ == '__main__':
     main()

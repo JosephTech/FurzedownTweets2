@@ -25,3 +25,6 @@ TODO
 - error handling - eg rate limit hit etc
 - initialise last tweet id on first run (start with 0)
 - test again
+
+http://stackoverflow.com/questions/32022845/get-the-last-tweet-with-tweepy
+https://dev.twitter.com/overview/api/tweets
