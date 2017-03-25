@@ -13,6 +13,7 @@ def main():
                                 consumer_key=settings.ConsumerKey,
                                 consumer_secret=settings.ConsumerSecret)
 
+    maxHashTags = settings.MaxHashTags
 
     lastTweetId = t.InitialiseLatestTweetId(settings.LastTweetId, settings.SearchQuery)
     print(lastTweetId)
@@ -24,7 +25,7 @@ def main():
     latestTweets = t.FilterReplies(latestTweets)
     latestTweets = t.FilterBannedUsers(latestTweets, bannedUsers)
     latestTweets = t.FilterBannedWords(latestTweets, bannedWords)
-    latestTweets = t.FilterMultipleHashTags(latestTweets, 3)
+    latestTweets = t.FilterMultipleHashTags(latestTweets, maxHashTags)
     latestTweets.reverse()
 
     for tweet in latestTweets:

@@ -15,6 +15,10 @@ class ConfigSettings:
         return self.getConfigSection('search')['query']
 
     @property
+    def MaxHashTags(self):
+        return self.getConfigSection('search')['maxHashTags']
+
+    @property
     def ConsumerKey(self):
         return self.getConfigSection('twitter')['consumerKey']
 
