@@ -12,8 +12,8 @@ class ReadConfigTests(unittest.TestCase):
         self.assertEqual(settings.SearchQuery,'#furzedown OR #tooting')
 
     def test_UpdateLastTweetId(self):
-        settings = readConfig.ConfigSettings('../config/config.json')
-        lastTweetId = settings.LastTweetId
+        settings = readConfig.ConfigSettings('./config/config.json')
+        lastTweetId = int(settings.LastTweetId)
         updatedId = lastTweetId + 1
         settings.UpdateLastTweetId(updatedId)
         updatedId = settings.LastTweetId
@@ -23,18 +23,18 @@ class ReadConfigTests(unittest.TestCase):
 class ReadListTests(unittest.TestCase):
 
    def test_GetUserList(self):
-        users = readList.getList('../config/users.txt')
+        users = readList.getList('./config/users.txt')
         self.assertTrue(len(users) > 0)
 
    def test_GetWordList(self):
-        words = readList.getList('../config/words.txt')
+        words = readList.getList('./config/words.txt')
         self.assertTrue(len(words) > 0)
 
 class TwitterInterfaceTests(unittest.TestCase):
 
     @classmethod
     def setUp(cls):
-        settings = readConfig.ConfigSettings('../config/config.json')
+        settings = readConfig.ConfigSettings('./config/config.json')
         cls._twitter = twitter.Wrapper(access_token=settings.AccessToken,
                                        access_token_secret=settings.AccessTokenSecret,
                                        consumer_key=settings.ConsumerKey,

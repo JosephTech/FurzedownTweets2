@@ -5,7 +5,7 @@ class Wrapper:
     def __init__(self, consumer_key, consumer_secret, access_token, access_token_secret):
         auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
         auth.set_access_token(access_token, access_token_secret)
-        self.api = tweepy.API(auth)
+        self.api = tweepy.API(auth, wait_on_rate_limit_notify=True)
 
 
     def LatestTweets(self, searchString, lastId):
@@ -32,17 +32,23 @@ class Wrapper:
         # iterate the timeline and retweet
         # only allow tweets with 3 or less hashtags
         print(tweet.text)
+        #self.api.retweet(tweet.id)
 
     def InitialiseLatestTweetId(self, lastTweetId, searchString):
         """when first running, we dont want to get every tweet since the dawn of time!"""
         if lastTweetId==0:
             searchResults = tweepy.Cursor(self.api.search, q=searchString, lang='en').items(1)
             latestTweets = list()
+
             for result in searchResults:
                 latestTweets.append(result)
 
-            return latestTweets[0].id
+            if(latestTweets):
+                return latestTweets[0].id
 
         return lastTweetId
+
+    def DirectMessage(self, userId, messageText):
+        self.api.send_direct_message(screen_name=userId, text=messageText)
 
 
