@@ -4,8 +4,6 @@ import readConfig
 def FollowBackNewFollowers():
     settings = readConfig.ConfigSettings('./config/config.json')
 
-    lastFollower = settings.LastFollower
-
     t = twitter.Wrapper(access_token=settings.AccessToken,
                             access_token_secret=settings.AccessTokenSecret,
                             consumer_key=settings.ConsumerKey,
@@ -17,3 +15,6 @@ def FollowBackNewFollowers():
         return len(newFollowers)
     except Exception as e:
         print(e)
+
+if __name__ == '__main__':
+    FollowBackNewFollowers()

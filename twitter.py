@@ -39,9 +39,9 @@ class Wrapper:
     def GetNewFollowers(self):
         newFollowers = list()
         for follower in tweepy.Cursor(self.api.followers).items(100):
-            if not follower.following:
-                print(follower.screen_name)
-                newFollowers.append(follower)
+            #if not follower.following:
+             print(follower.screen_name)
+             newFollowers.append(follower)
         return newFollowers
 
     def BefriendNewFollowers(self, newFollowers):
