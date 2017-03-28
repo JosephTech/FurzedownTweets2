@@ -11,7 +11,7 @@ def FollowBackNewFollowers():
 
     try:
         newFollowers = t.GetNewFollowers()
-        t.BefriendNewFollowers(newFollowers)
+        t.BefriendNewFollowers(newFollowers, settings.NewFollowerMessage)
         return len(newFollowers)
     except Exception as e:
         print(e)

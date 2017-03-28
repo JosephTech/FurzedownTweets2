@@ -23,8 +23,8 @@ class ConfigSettings:
         return self.getConfigSection('logging')['recipient']
 
     @property
-    def LastFollower(self):
-        return self.getConfigSection('twitter')['lastFollower']
+    def NewFollowerMessage(self):
+        return self.getConfigSection('logging')['newFollowerMessage']
 
     @property
     def ConsumerKey(self):
@@ -46,6 +46,8 @@ class ConfigSettings:
     def LastTweetId(self):
         return self.getConfigSection('twitter')['lastTweetId']
 
+
+
     def UpdateLastTweetId(self, lastTweetId):
         with open(self.configFile, "r+") as jsonDataFile:
             config = json.load(jsonDataFile)
@@ -54,10 +56,3 @@ class ConfigSettings:
         with open(self.configFile, "w") as jsonFile:
             json.dump(config, jsonFile)
 
-    def UpdateLastFollower(self, lastTweetId):
-        with open(self.configFile, "r+") as jsonDataFile:
-            config = json.load(jsonDataFile)
-            config['twitter']['lastTweetId'] = lastTweetId
-            jsonDataFile.write(json.dumps(config))
-        with open(self.configFile, "w") as jsonFile:
-            json.dump(config, jsonFile)

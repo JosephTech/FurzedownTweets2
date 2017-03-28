@@ -39,15 +39,16 @@ class Wrapper:
     def GetNewFollowers(self):
         newFollowers = list()
         for follower in tweepy.Cursor(self.api.followers).items(100):
-            #if not follower.following:
-             print(follower.screen_name)
-             newFollowers.append(follower)
+            if not follower.following:
+                print(follower.screen_name)
+                newFollowers.append(follower)
         return newFollowers
 
-    def BefriendNewFollowers(self, newFollowers):
+    def BefriendNewFollowers(self, newFollowers, newFollowerMessage):
         for follower in newFollowers:
             self.api.create_friendship(follower.screen_name)
-            self.DirectMessage(follower.screen_name, "Hi! Thanks for the follow. Check our timeline for all Tooting and Furzedown news.")
+            if newFollowerMessage:
+                self.DirectMessage(follower.screen_name, newFollowerMessage)
 
 
     def GetFollowers_Count(self):
