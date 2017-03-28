@@ -1,6 +1,8 @@
 import readConfig
 import readList
 import twitter
+import filter
+import friendFollowers
 
 
 def main():
@@ -8,6 +10,7 @@ def main():
 
     bannedUsers = readList.getList('./config/users.txt')
     bannedWords = readList.getList('./config/words.txt')
+    loggingRecipient = settings.LoggingRecipient
 
     t = twitter.Wrapper(access_token=settings.AccessToken,
                         access_token_secret=settings.AccessTokenSecret,
@@ -26,10 +29,10 @@ def main():
     else:
         latestTweetId = lastTweetId
 
-    latestTweets = t.FilterReplies(latestTweets)
-    latestTweets = t.FilterBannedUsers(latestTweets, bannedUsers)
-    latestTweets = t.FilterBannedWords(latestTweets, bannedWords)
-    latestTweets = t.FilterMultipleHashTags(latestTweets, maxHashTags)
+    latestTweets = filter.FilterReplies(latestTweets)
+    latestTweets = filter.FilterBannedUsers(latestTweets, bannedUsers)
+    latestTweets = filter.FilterBannedWords(latestTweets, bannedWords)
+    latestTweets = filter.FilterMultipleHashTags(latestTweets, maxHashTags)
     latestTweets.reverse()
 
     errorCount = 0
@@ -42,11 +45,13 @@ def main():
             errorCount += 1
         continue
 
-    message = "ReTweeter Log: %d Tweets retweeted, %d errors occured." % (retweetCount, errorCount)
-    print(message)
-    t.DirectMessage("josephtech", message)
-
     settings.UpdateLastTweetId(latestTweetId)
+
+    #follow back new followers
+    newFollowers = friendFollowers.FollowBackNewFollowers()
+    message = "{0} retweets, {1} errors, {2} new followers, {3} total followers".format(retweetCount, errorCount, newFollowers, t.GetFollowers_Count())
+    print(message)
+    t.DirectMessage(loggingRecipient, message)
 
 
 if __name__ == '__main__':

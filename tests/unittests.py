@@ -2,6 +2,7 @@ import unittest
 import readConfig
 import readList
 import twitter
+import filter
 from tests import mocks
 
 
@@ -12,7 +13,7 @@ class ReadConfigTests(unittest.TestCase):
         self.assertEqual(settings.SearchQuery,'#furzedown OR #tooting')
 
     def test_UpdateLastTweetId(self):
-        settings = readConfig.ConfigSettings('./config/config.json')
+        settings = readConfig.ConfigSettings('../config/config.json')
         lastTweetId = int(settings.LastTweetId)
         updatedId = lastTweetId + 1
         settings.UpdateLastTweetId(updatedId)
@@ -23,18 +24,18 @@ class ReadConfigTests(unittest.TestCase):
 class ReadListTests(unittest.TestCase):
 
    def test_GetUserList(self):
-        users = readList.getList('./config/users.txt')
+        users = readList.getList('../config/users.txt')
         self.assertTrue(len(users) > 0)
 
    def test_GetWordList(self):
-        words = readList.getList('./config/words.txt')
+        words = readList.getList('../config/words.txt')
         self.assertTrue(len(words) > 0)
 
 class TwitterInterfaceTests(unittest.TestCase):
 
     @classmethod
     def setUp(cls):
-        settings = readConfig.ConfigSettings('./config/config.json')
+        settings = readConfig.ConfigSettings('../config/config.json')
         cls._twitter = twitter.Wrapper(access_token=settings.AccessToken,
                                        access_token_secret=settings.AccessTokenSecret,
                                        consumer_key=settings.ConsumerKey,
@@ -62,7 +63,7 @@ class TwitterInterfaceTests(unittest.TestCase):
         tweets.append(mocks.status('@this is a reply', 'jules'))
         tweets.append(mocks.status('this is not a reply', 'jules'))
 
-        latestTweets = self._twitter.FilterReplies(tweets)
+        latestTweets = filter.FilterReplies(tweets)
 
         self.assertTrue(len(latestTweets) == 1)
         self.assertTrue(latestTweets[0].text == 'this is not a reply')
@@ -75,7 +76,7 @@ class TwitterInterfaceTests(unittest.TestCase):
         bannedUsers = list()
         bannedUsers.append('lucifer')
 
-        latestTweets = self._twitter.FilterBannedUsers(tweets, bannedUsers)
+        latestTweets = filter.FilterBannedUsers(tweets, bannedUsers)
 
         self.assertTrue(len(latestTweets) == 1)
         self.assertTrue(latestTweets[0].author.screen_name == 'jules')
@@ -90,7 +91,7 @@ class TwitterInterfaceTests(unittest.TestCase):
         bannedWords = list()
         bannedWords.append('bollocks')
 
-        latestTweets = self._twitter.FilterBannedWords(tweets, bannedWords)
+        latestTweets = filter.FilterBannedWords(tweets, bannedWords)
 
         self.assertTrue(len(latestTweets) == 1)
         self.assertTrue(latestTweets[0].text == 'this is not a reply')
@@ -102,7 +103,7 @@ class TwitterInterfaceTests(unittest.TestCase):
         tweets.append(mocks.status('#tooting #furzedown #paris #boston', 'jules'))
         tweets.append(mocks.status('#tooting #hello', 'lucifer'))
 
-        latestTweets = self._twitter.FilterMultipleHashTags(tweets, 3)
+        latestTweets = filter.FilterMultipleHashTags(tweets, 3)
 
         self.assertTrue(len(latestTweets) == 1)
         self.assertTrue(latestTweets[0].text == '#tooting #hello')

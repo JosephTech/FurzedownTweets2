@@ -19,6 +19,14 @@ class ConfigSettings:
         return self.getConfigSection('search')['maxHashTags']
 
     @property
+    def LoggingRecipient(self):
+        return self.getConfigSection('logging')['recipient']
+
+    @property
+    def LastFollower(self):
+        return self.getConfigSection('twitter')['lastFollower']
+
+    @property
     def ConsumerKey(self):
         return self.getConfigSection('twitter')['consumerKey']
 
@@ -39,6 +47,14 @@ class ConfigSettings:
         return self.getConfigSection('twitter')['lastTweetId']
 
     def UpdateLastTweetId(self, lastTweetId):
+        with open(self.configFile, "r+") as jsonDataFile:
+            config = json.load(jsonDataFile)
+            config['twitter']['lastTweetId'] = lastTweetId
+            jsonDataFile.write(json.dumps(config))
+        with open(self.configFile, "w") as jsonFile:
+            json.dump(config, jsonFile)
+
+    def UpdateLastFollower(self, lastTweetId):
         with open(self.configFile, "r+") as jsonDataFile:
             config = json.load(jsonDataFile)
             config['twitter']['lastTweetId'] = lastTweetId
