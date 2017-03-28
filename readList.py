@@ -7,5 +7,5 @@ def getList(fileName):
         return lines
 
 if __name__ == "__main__":
-    print(getList('./config/users.txt'))
-    print(getList('./config/words.txt'))
+    print(getList('/home/pi/jules/retweeter/furzedown/config/users.txt'))
+    print(getList('/home/pi/jules/retweeter/furzedown/config/words.txt'))

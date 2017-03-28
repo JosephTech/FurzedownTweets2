@@ -2,7 +2,7 @@ import twitter
 import readConfig
 
 def FollowBackNewFollowers():
-    settings = readConfig.ConfigSettings('./config/config.json')
+    settings = readConfig.ConfigSettings('/home/pi/jules/retweeter/furzedown/config/config.json')
 
     t = twitter.Wrapper(access_token=settings.AccessToken,
                             access_token_secret=settings.AccessTokenSecret,

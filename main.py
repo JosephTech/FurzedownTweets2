@@ -6,10 +6,10 @@ import friendFollowers
 
 
 def main():
-    settings = readConfig.ConfigSettings('./config/config.json')
+    settings = readConfig.ConfigSettings('/home/pi/jules/retweeter/furzedown/config/config.json')
 
-    bannedUsers = readList.getList('./config/users.txt')
-    bannedWords = readList.getList('./config/words.txt')
+    bannedUsers = readList.getList('/home/pi/jules/retweeter/furzedown/config/users.txt')
+    bannedWords = readList.getList('/home/pi/jules/retweeter/furzedown/config/words.txt')
     loggingRecipient = settings.LoggingRecipient
 
     t = twitter.Wrapper(access_token=settings.AccessToken,
