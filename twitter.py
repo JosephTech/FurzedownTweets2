@@ -47,6 +47,7 @@ class Wrapper:
     def BefriendNewFollowers(self, newFollowers):
         for follower in newFollowers:
             self.api.create_friendship(follower.screen_name)
+            self.DirectMessage(follower.screen_name, "Hi! Thanks for the follow. Check our timeline for all Tooting and Furzedown news.")
 
 
     def GetFollowers_Count(self):
