@@ -1,3 +1,5 @@
+First deployment (Raspberry Pi) 20170328
+
 Rewrite/Refactor of Furzedown Tweets TwitterBot code
 
 Objectives:
