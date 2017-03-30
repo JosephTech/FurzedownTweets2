@@ -42,6 +42,7 @@ def main():
             t.Process(tweet)
             retweetCount += 1
         except Exception as e:
+            t.DirectMessage(loggingRecipient, str(e))
             errorCount += 1
         continue
 
