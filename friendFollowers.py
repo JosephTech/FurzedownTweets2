@@ -1,8 +1,9 @@
 import twitter
 import readConfig
+import os
 
 def FollowBackNewFollowers():
-    settings = readConfig.ConfigSettings('/home/pi/jules/retweeter/furzedown/config/config.json')
+    settings = readConfig.ConfigSettings('config.json')
 
     t = twitter.Wrapper(access_token=settings.AccessToken,
                             access_token_secret=settings.AccessTokenSecret,
@@ -14,6 +15,7 @@ def FollowBackNewFollowers():
         t.BefriendNewFollowers(newFollowers, settings.NewFollowerMessage)
         return len(newFollowers)
     except Exception as e:
+        t.DirectMessage(settings.LoggingRecipient, str(e))
         print(e)
 
 if __name__ == '__main__':

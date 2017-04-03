@@ -1,6 +1,9 @@
+import os
+
 def getList(fileName):
+    filePath = os.path.join(os.getcwd(), 'config', fileName)
     lines = []
-    with open(fileName) as file:
+    with open(filePath) as file:
         for line in file:
             line = line.strip()
             lines.append(line)

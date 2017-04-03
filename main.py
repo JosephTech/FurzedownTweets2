@@ -3,13 +3,15 @@ import readList
 import twitter
 import filter
 import friendFollowers
+import os
 
 
 def main():
-    settings = readConfig.ConfigSettings('/home/pi/jules/retweeter/furzedown/config/config.json')
 
-    bannedUsers = readList.getList('/home/pi/jules/retweeter/furzedown/config/users.txt')
-    bannedWords = readList.getList('/home/pi/jules/retweeter/furzedown/config/words.txt')
+    settings = readConfig.ConfigSettings('config.json')
+
+    bannedUsers = readList.getList('users.txt')
+    bannedWords = readList.getList('words.txt')
     loggingRecipient = settings.LoggingRecipient
 
     t = twitter.Wrapper(access_token=settings.AccessToken,

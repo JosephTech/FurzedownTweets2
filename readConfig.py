@@ -1,9 +1,11 @@
 import json
+import os
 
 class ConfigSettings:
 
     def __init__(self, configfile):
-        self.configFile = configfile
+        configFilePath = os.path.join(os.getcwd(), 'config', configfile)
+        self.configFile = configFilePath
 
     def getConfigSection(self, section):
         with open(self.configFile, 'r') as jsonDataFile:
@@ -45,6 +47,13 @@ class ConfigSettings:
     @property
     def LastTweetId(self):
         return self.getConfigSection('twitter')['lastTweetId']
+
+    @property
+    def ConfigPath(self):
+        return os.path.join(os.getcwd(),'config')
+
+    def getConfigFilePath(self, fileName):
+        return os.path.join(self.ConfigPath, fileName)
 
 
 

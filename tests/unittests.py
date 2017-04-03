@@ -3,6 +3,7 @@ import readConfig
 import readList
 import twitter
 import filter
+import os
 from tests import mocks
 
 
@@ -109,6 +110,11 @@ class TwitterInterfaceTests(unittest.TestCase):
         self.assertTrue(latestTweets[0].text == '#tooting #hello')
         for tweet in latestTweets:
             print(tweet.text)
+
+class UtilTests(unittest.TestCase):
+    def test_GetLocalPath(self):
+        path = os.getcwd() + '\\config\\'
+        print(str(path))
 
 
 
