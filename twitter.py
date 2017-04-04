@@ -16,8 +16,8 @@ class Wrapper:
         return latestTweets
 
     def Process(self, tweet):
-        #print(tweet.text)
-        self.api.retweet(tweet.id)
+        print(tweet.text)
+        #self.api.retweet(tweet.id)
 
 
     def InitialiseLatestTweetId(self, lastTweetId, searchString):
@@ -44,11 +44,18 @@ class Wrapper:
                 newFollowers.append(follower)
         return newFollowers
 
-    def BefriendNewFollowers(self, newFollowers, newFollowerMessage):
+    def BefriendNewFollowers(self, newFollowers, newFollowerMessage, loggingRecipient):
+        newFollowers = 0
         for follower in newFollowers:
-            self.api.create_friendship(follower.screen_name)
-            if newFollowerMessage:
-                self.DirectMessage(follower.screen_name, newFollowerMessage)
+            try:
+                self.api.create_friendship(follower.screen_name)
+                if newFollowerMessage:
+                    self.DirectMessage(follower.screen_name, newFollowerMessage)
+                newFollowers += 1
+            except Exception as e:
+                self.DirectMessage(loggingRecipient, str(e))
+
+        return newFollowers
 
 
     def GetFollowers_Count(self):
