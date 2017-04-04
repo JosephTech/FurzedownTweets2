@@ -1,32 +1,55 @@
-First deployment (Raspberry Pi) 20170328
+TwitterBot written in Python, using Tweepy API
 
-Rewrite/Refactor of Furzedown Tweets TwitterBot code
+Main Functionality:
 
-Objectives:
-- learn Python coding better
-- better/clean code structure
-- break down monolithic codeblock and abstract config/twitter api calls etc away to other files/classes
+Retweet:
+- Searches for and retweets statuses that match specified search criteria
+- Retweets can be restricted by:
+  - key words
+  - user name
+  - number of hash tags
 
-20170312
-Started with config settings - looking at alternatives to config.ini which seems quite old school. Reading about JSON and YAML - opted for JSON as it's something widely used across all platforms.
+Follow:
+- Checks for new followers and follows them back
+- Sends a welcome Direct Message to new followers
 
-20170313
-Wrapped config settings in a class and exposed settings as properties - pass json file name to constructor
-Created a basic unit test
+Logging
+- Status updates and errors are sent to specified Twitter user via DM
 
-20170318
-Started wrapper class for Tweepy API
-Unit Tests - how to declare setup method
-Config - how to update a setting in the config file
+Getting Started
+This code was originally written for running on a Raspberry Pi, but could be run on any platform that runs Python
 
-TODO
-- can we set path variable so we dont need to explicitly state path to config files etc?
-- How do we mock tweets for testing twitter API without calling twitter
-- add follow back to main
-- dm new followers
-- error handling - eg rate limit hit etc
-- initialise last tweet id on first run (start with 0)
-- test again
+Example implementation: @furzedowntweets https://twitter.com/furzedowntweets
 
-http://stackoverflow.com/questions/32022845/get-the-last-tweet-with-tweepy
-https://dev.twitter.com/overview/api/tweets
+Twitter App:
+Set up via https://apps.twitter.com/ - you will need consumer key, consumer secret, access token and access token secret to allow you to send tweets via the Twitter API
+
+Tweepy
+This is not part of the standard Python distribution - installation details here https://github.com/tweepy/tweepy
+
+Upload the following files to your platform:
+- filter.py
+- friendFollowers.py
+- main.py
+- readConfig.py
+- readList.py
+- twitter.py
+- /config/config.json
+- /config/users.txt
+- /config/words.txt
+
+main.py is the entry point (ie sudo python main.py)
+You must have a config subfolder within your main folder.
+
+You must set the following in /config/config.json
+- logging/recipient
+- logging/newFollowerMessage
+- search/query
+- search/maxHashTags
+- twitter/consumerKey
+- twitter/consumerSecret
+- twitter/accessToken
+- twitter/accessTokenSecret
+- twitter/lastTweetId
+
+Create a crontab to run main.py at regular intervals.
