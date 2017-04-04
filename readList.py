@@ -1,7 +1,8 @@
 import os
+import sys
 
 def getList(fileName):
-    filePath = os.path.join(os.getcwd(), 'config', fileName)
+    filePath = os.path.join(sys.path[0], 'config', fileName)
     lines = []
     with open(filePath) as file:
         for line in file:

@@ -1,10 +1,11 @@
 import json
 import os
+import sys
 
 class ConfigSettings:
 
     def __init__(self, configfile):
-        configFilePath = os.path.join(os.getcwd(), 'config', configfile)
+        configFilePath = os.path.join(sys.path[0], 'config', configfile)
         self.configFile = configFilePath
 
     def getConfigSection(self, section):
