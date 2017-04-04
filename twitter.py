@@ -16,8 +16,8 @@ class Wrapper:
         return latestTweets
 
     def Process(self, tweet):
-        print(tweet.text)
-        #self.api.retweet(tweet.id)
+        #print(tweet.text)
+        self.api.retweet(tweet.id)
 
 
     def InitialiseLatestTweetId(self, lastTweetId, searchString):

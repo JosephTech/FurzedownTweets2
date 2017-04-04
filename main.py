@@ -51,7 +51,7 @@ def main():
     settings.UpdateLastTweetId(latestTweetId)
 
     #follow back new followers
-    newFollowers = friendFollowers.FollowBackNewFollowers()
+    newFollowers = friendFollowers.FollowBackNewFollowers(t, settings)
     message = "{0} retweets, {1} errors, {2} new followers, {3} total followers".format(retweetCount, errorCount, newFollowers, t.GetFollowers_Count())
     print(message)
     t.DirectMessage(loggingRecipient, message)
