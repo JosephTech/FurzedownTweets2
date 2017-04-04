@@ -17,6 +17,7 @@ Logging
 - Status updates and errors are sent to specified Twitter user via DM
 
 Getting Started
+
 This code was originally written for running on a Raspberry Pi, but could be run on any platform that runs Python
 
 Example implementation: @furzedowntweets https://twitter.com/furzedowntweets
