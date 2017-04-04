@@ -53,7 +53,7 @@ class Wrapper:
                     self.DirectMessage(follower.screen_name, newFollowerMessage)
                     newFollowerCount += 1
             except Exception as e:
-                self.DirectMessage(loggingRecipient, str(e))
+                pass
 
         return newFollowerCount
 
