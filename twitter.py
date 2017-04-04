@@ -45,17 +45,17 @@ class Wrapper:
         return newFollowers
 
     def BefriendNewFollowers(self, newFollowers, newFollowerMessage, loggingRecipient):
-        newFollowers = 0
+        newFollowerCount = 0
         for follower in newFollowers:
             try:
                 self.api.create_friendship(follower.screen_name)
                 if newFollowerMessage:
                     self.DirectMessage(follower.screen_name, newFollowerMessage)
-                newFollowers += 1
+                    newFollowerCount += 1
             except Exception as e:
                 self.DirectMessage(loggingRecipient, str(e))
 
-        return newFollowers
+        return newFollowerCount
 
 
     def GetFollowers_Count(self):
