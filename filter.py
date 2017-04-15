@@ -10,3 +10,6 @@ def FilterBannedUsers(tweets, bannedUsers):
 
 def FilterMultipleHashTags(tweets, maxHashTags):
     return list(filter(lambda status: status.text.count('#') <= maxHashTags, tweets))
+
+def FilterRetweets(tweets):
+    return list(filter(lambda status: status.text.count('RT') == 0, tweets))
