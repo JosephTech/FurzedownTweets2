@@ -13,11 +13,12 @@ def saveTweetJsonToFile(tweet):
         json_str = json.dumps(tweet._json)
         json_str = json_str.replace('\"id_str\"','\"_id\"', 1)
 
-        with open(fileName, 'a', encoding='utf-8') as jsonFile:
+        with open(fileName, 'a') as jsonFile:
             jsonFile.write(str(json_str))
             jsonFile.write("\n")
             jsonFile.close()
     except Exception as e:
+        print(str(e))
         pass
 
 def getDailyFileName():
