@@ -30,6 +30,10 @@ class ConfigSettings:
         return self.getConfigSection('logging')['newFollowerMessage']
 
     @property
+    def SaveJsonToFile(self):
+        return self.getConfigSection('logging')['saveJsonToFile']
+
+    @property
     def ConsumerKey(self):
         return self.getConfigSection('twitter')['consumerKey']
 
