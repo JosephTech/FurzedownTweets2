@@ -3,7 +3,7 @@ import readList
 import twitter
 import filter
 import friendFollowers
-import os
+import export
 
 
 def main():
@@ -42,6 +42,8 @@ def main():
     for tweet in latestTweets:
         try:
             t.Process(tweet)
+            if settings.SaveJsonToFile:
+                export.saveTweetJsonToFile(tweet)
             retweetCount += 1
         except Exception as e:
             t.DirectMessage(loggingRecipient, str(e))
