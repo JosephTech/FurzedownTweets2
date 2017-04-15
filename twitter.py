@@ -40,7 +40,7 @@ class Wrapper:
         newFollowers = list()
         for follower in tweepy.Cursor(self.api.followers).items(100):
             if not follower.following:
-                print(follower.screen_name)
+                print('New Follower: {0}'.format(follower.screen_name))
                 newFollowers.append(follower)
         return newFollowers
 
@@ -53,6 +53,7 @@ class Wrapper:
                     self.DirectMessage(follower.screen_name, newFollowerMessage)
                     newFollowerCount += 1
             except Exception as e:
+                print(str(e))
                 pass
 
         return newFollowerCount
