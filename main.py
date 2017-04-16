@@ -31,6 +31,7 @@ def main():
     else:
         latestTweetId = lastTweetId
 
+    latestTweets = filter.FilterRetweets(latestTweets)
     latestTweets = filter.FilterReplies(latestTweets)
     latestTweets = filter.FilterBannedUsers(latestTweets, bannedUsers)
     latestTweets = filter.FilterBannedWords(latestTweets, bannedWords)
