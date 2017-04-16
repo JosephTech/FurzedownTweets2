@@ -26,9 +26,10 @@ def saveTweetJsonToFile(tweet):
         pass
 
 def addDatabaseId(tweet_json):
-    db_id = tweet_json['id_str']
-    tweet_json['_id'] = db_id
-    return tweet_json
+    j = json.loads(tweet_json)
+    db_id = j['id_str']
+    j['_id'] = db_id
+    return json.dumps(j)
 
 
 def getDailyFileName():
