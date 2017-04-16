@@ -11,7 +11,7 @@ def saveTweetJsonToFile(tweet):
         print(fileName)
 
         json_str = json.dumps(tweet._json)
-        json_str = json_str.replace('\"id_str\"','\"_id\"', 1)
+        #json_str = json_str.replace('\"id_str\"','\"_id\"', 1)
 
         with open(fileName, 'a') as jsonFile:
             jsonFile.write(str(json_str))
