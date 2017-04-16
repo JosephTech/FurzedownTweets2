@@ -12,7 +12,10 @@ def saveTweetJsonToFile(tweet):
         print(fileName)
 
         json_str = json.dumps(tweet._json)
-        json_str = addDatabaseId(json_str)
+        try:
+            json_str = addDatabaseId(json_str)
+        except Exception as e:
+            pass
 
         with open(fileName, 'a') as jsonFile:
             jsonFile.write(str(json_str))
