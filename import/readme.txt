@@ -1,0 +1,1 @@
+scheduled task at 00:15 daily calls C:\Users\Jules\Documents\GitHub\_ReTweeter\import\daily-load.bat with previoud days date in YYYYMMDD format

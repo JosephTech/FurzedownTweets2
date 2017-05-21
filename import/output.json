@@ -1,0 +1,28 @@
+MongoDB shell version v3.4.3
+connecting to: mongodb://julesjoseph:ftsP93gnEqiEXZPe@cluster0-shard-00-00-rsihj.mongodb.net:27017,cluster0-shard-00-01-rsihj.mongodb.net:27017,cluster0-shard-00-02-rsihj.mongodb.net:27017/furzedowntweets?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin
+2017-05-21T14:53:28.677+0100 I NETWORK  [thread1] Starting new replica set monitor for Cluster0-shard-0/cluster0-shard-00-00-rsihj.mongodb.net:27017,cluster0-shard-00-01-rsihj.mongodb.net:27017,cluster0-shard-00-02-rsihj.mongodb.net:27017
+MongoDB server version: 3.4.4
+switched to db furzedowntweets
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 20 }, "count" : 91 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 19 }, "count" : 83 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 18 }, "count" : 79 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 17 }, "count" : 97 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 16 }, "count" : 109 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 15 }, "count" : 80 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 14 }, "count" : 82 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 13 }, "count" : 59 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 12 }, "count" : 100 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 11 }, "count" : 81 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 10 }, "count" : 79 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 9 }, "count" : 80 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 8 }, "count" : 80 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 7 }, "count" : 73 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 6 }, "count" : 94 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 5 }, "count" : 80 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 4 }, "count" : 103 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 3 }, "count" : 81 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 2 }, "count" : 82 }
+{ "_id" : { "year" : 2017, "month" : 5, "day" : 1 }, "count" : 54 }
+Type "it" for more
+{ "_id" : "866074532922175489", "text" : "#tooting nights @brewteapub  @TotaRestaurant #tiptop 💋", "created_at" : ISODate("2017-05-20T23:33:54Z") }
+bye
