@@ -1,0 +1,1 @@
+mongo < convert-string-to-date.js > output.json
