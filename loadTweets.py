@@ -21,8 +21,10 @@ def main(year, month, day):
 
 
     #get tweets out of json file
+    fileName = 'tweet_data_%4d%02d%02d.json' % (year, month, day)
+    print(fileName)
     data = []
-    for line in open('./export/tweet_data_20170830.json','r'):
+    for line in open('./export/' + fileName,'r'):
         data.append(json.loads(line))
 
     #load tweets into database
@@ -41,4 +43,4 @@ def main(year, month, day):
 
 
 if __name__ == '__main__':
-    main(2017, 8, 30)
+    main(2017, 9, 1)
