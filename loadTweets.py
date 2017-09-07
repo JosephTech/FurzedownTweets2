@@ -5,15 +5,18 @@ from datetime import datetime
 import sys
 from pprint import pprint
 
-def main():
+def main(year, month, day):
+    #print 'Number of arguments:', len(sys.argv), 'arguments.'
+    #print 'Argument List:', str(sys.argv)
+
     #set up connection
     settings = readConfig.ConfigSettings('config.json')
     client = MongoClient(settings.ConnectionString)
     db = client.furzedowntweets
 
     #clear down tweets for the day being loaded
-    start = datetime(2017, 8, 30, 0, 0, 0)
-    end = datetime(2017, 8, 31, 0, 0, 0)
+    start = datetime(year, month, day, 0, 0, 0)
+    end = datetime(year, month, day, 23, 59, 59)
     db.test.delete_many({"created_at": {"$gte": start, "$lt": end}})
 
 
@@ -38,4 +41,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main(2017, 8, 30)
