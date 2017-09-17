@@ -6,6 +6,7 @@ import json
 import sys
 import readConfig
 from pymongo import MongoClient
+import os.path
 
 
 def main():
@@ -19,7 +20,7 @@ def main():
 
     #get yesterday's date
     #yesterday = datetime.now() + timedelta(days=-1)
-    yesterday = datetime(2017, 8, 28)
+    yesterday = datetime(2017, 9, 8)
     year = yesterday.year
     month = yesterday.month
     day = yesterday.day
@@ -35,28 +36,34 @@ def main():
     print('deleted: ' + str(deleted.deleted_count))
 
     #get tweets out of json file
-    filename = 'tweet_data_%4d%02d%02d.json' % (year, month, day)
+    filename = './export/tweet_data_%4d%02d%02d.json' % (year, month, day)
+    if not os.path.isfile(filename):
+        print('File does not exist: ' + filename)
+        exit()
+
     print('loading ' + filename)
     data = []
-    for line in open('./export/' + filename,'r'):
+    for line in open(filename,'r'):
         data.append(json.loads(line))
 
     #load tweets into database
+    print('inserting records...')
     counter = 1
     for rec in data:
         try:
             tweet_database[collection].insert_one(rec)
-            print('inserted %d' % (counter))
         except:
             print("Unexpected error: ", sys.exc_info()[0], str(counter))
         counter = counter + 1
+    print('inserted: ' + str(counter))
 
     #update string dates to datetime
+    print('converting strings to dates...')
     for doc in tweet_database[collection].find({"created_at": {"$type": 2}}):
         tweet_database[collection].update_one(
             {'_id': doc['_id']}, 
             {'$set':{'created_at' : datetime.strptime(doc['created_at'],"%a %b %d %H:%M:%S +0000 %Y")}})
 
-
+    print('done')
 if __name__ == '__main__':
     main()
