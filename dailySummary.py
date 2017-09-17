@@ -6,6 +6,8 @@ from bson.son import SON
 
 from pymongo import MongoClient
 
+#GitHub Test
+
 client = MongoClient('mongodb://julesjoseph:ftsP93gnEqiEXZPe@cluster0-shard-00-00-rsihj.mongodb.net:27017,cluster0-shard-00-01-rsihj.mongodb.net:27017,cluster0-shard-00-02-rsihj.mongodb.net:27017/furzedowntweets?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin')
 db = client.furzedowntweets
 tweets = db.tweets.find()
@@ -31,7 +33,7 @@ pipeline = [
     {'$match': {'created_at': {'$gt': start}}},
     #get all tweets with hashtags
     {'$sort':{'_id':-1}}, {'$match': {'entities.hashtags.text':{'$exists':'true'}}},
-    #hashtags are stored in an array, so separate thiese out
+    #hashtags are stored in an array, so separate these out
     {'$unwind':'$entities.hashtags'},
     #use the text of the hashtag
     {'$project' : {'entities.hashtags.text':1,'_id':0}},
@@ -63,12 +65,14 @@ pipeline = [
     {'$sort': SON([("count", -1), ("_id", -1)])}
 ]
 
-summaryText+='All Time Hashtags'
+summaryText +=('{0} All Time Hashtags'.format(yesterday.strftime('%Y-%m-%d')))
 summaryText+='\n'
 for hashTag in db.tweets.aggregate(pipeline):
     if(hashTag['count'] > 2 and hashTag['_id'] != 'tooting' and hashTag['_id'] != 'furzedown'):
         summaryText+='{0},{1}'.format(hashTag['_id'],hashTag['count'])
         summaryText+='\n'
+summaryText+='\n'
+
 
 print(summaryText)
 
