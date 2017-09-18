@@ -1,26 +1,26 @@
 #!/usr/bin/python3.6
 
-from datetime import datetime
-from datetime import timedelta
 import json
 import sys
+import os.path
+from datetime import datetime
+from datetime import timedelta
 import readConfig
 from pymongo import MongoClient
-import os.path
+from pymongo import errors
 
 
 def main():
 
     #set up connection
     database = 'furzedowntweets'
-    collection = 'test'
+    collection = 'tweets'
     settings = readConfig.ConfigSettings('config.json')
     client = MongoClient(settings.ConnectionString)
     tweet_database = client[database]
 
     #get yesterday's date
     yesterday = datetime.now() + timedelta(days=-1)
-    #yesterday = datetime(2017, 9, 8)
     year = yesterday.year
     month = yesterday.month
     day = yesterday.day
@@ -36,7 +36,7 @@ def main():
     print('deleted: ' + str(deleted.deleted_count))
 
     #get tweets out of json file
-    filename = os.path.join(sys.path[0],'export','tweet_data_%4d%02d%02d.json' % (year, month, day))
+    filename = os.path.join(sys.path[0], 'export', 'tweet_data_%4d%02d%02d.json' % (year, month, day))
     print(filename)
     if not os.path.isfile(filename):
         print('File does not exist: ' + filename)
@@ -44,7 +44,7 @@ def main():
 
     print('loading ' + filename)
     data = []
-    for line in open(filename,'r'):
+    for line in open(filename, 'r'):
         data.append(json.loads(line))
 
     #load tweets into database
@@ -53,8 +53,10 @@ def main():
     for rec in data:
         try:
             tweet_database[collection].insert_one(rec)
+        except errors.OperationFailure:
+            print("Operation Failure: ", sys.exc_info()[0], str(counter))
         except:
-            print("Unexpected error: ", sys.exc_info()[0], str(counter))
+            print("Unexpectec Error: ", sys.exc_info()[0], str(counter))
         counter = counter + 1
     print('inserted: ' + str(counter))
 
@@ -62,8 +64,8 @@ def main():
     print('converting strings to dates...')
     for doc in tweet_database[collection].find({"created_at": {"$type": 2}}):
         tweet_database[collection].update_one(
-            {'_id': doc['_id']}, 
-            {'$set':{'created_at' : datetime.strptime(doc['created_at'],"%a %b %d %H:%M:%S +0000 %Y")}})
+            {'_id': doc['_id']},
+            {'$set':{'created_at' : datetime.strptime(doc['created_at'], "%a %b %d %H:%M:%S +0000 %Y")}})
 
     print('done')
 if __name__ == '__main__':
