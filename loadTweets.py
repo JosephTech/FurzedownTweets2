@@ -19,8 +19,8 @@ def main():
     tweet_database = client[database]
 
     #get yesterday's date
-    #yesterday = datetime.now() + timedelta(days=-1)
-    yesterday = datetime(2017, 9, 8)
+    yesterday = datetime.now() + timedelta(days=-1)
+    #yesterday = datetime(2017, 9, 8)
     year = yesterday.year
     month = yesterday.month
     day = yesterday.day
@@ -36,7 +36,8 @@ def main():
     print('deleted: ' + str(deleted.deleted_count))
 
     #get tweets out of json file
-    filename = './export/tweet_data_%4d%02d%02d.json' % (year, month, day)
+    filename = os.path.join(sys.path[0],'export','tweet_data_%4d%02d%02d.json' % (year, month, day))
+    print(filename)
     if not os.path.isfile(filename):
         print('File does not exist: ' + filename)
         exit()
