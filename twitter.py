@@ -9,7 +9,7 @@ class Wrapper:
 
 
     def LatestTweets(self, searchString, lastId):
-        searchResults = tweepy.Cursor(self.api.search, q=searchString, since_id=lastId, lang='en').items()
+        searchResults = tweepy.Cursor(self.api.search, q=searchString, since_id=lastId, lang='en', tweet_mode='extended').items()
         latestTweets = list()
         for result in searchResults:
             latestTweets.append(result)
