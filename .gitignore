@@ -6,5 +6,6 @@ __pycache__/
 .json
 export/
 MongoDB Scripts/
+pymongo/
 
 .vscode/
