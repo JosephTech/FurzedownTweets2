@@ -1,23 +1,25 @@
-# Introduction
+# MongoDB Integration
+
+## Introduction
 I was looking for a practical project to help me learn MongoDB. I realised that the ideal data source already existed in my Python ReTweeter project (FurzedownTweets). The basic Tweet object exposed using JSON by the [Twitter API](https://developer.twitter.com/en/docs/tweets/data-dictionary/overview/tweet-object) is a great example of the sort of hierarchical document which MongoDB is designed to handle. 
 
-# Libraries Used
+## Libraries Used
 * [Tweepy](http://www.tweepy.org/)
 * [PyMongo](https://api.mongodb.com/python/current/)
 * [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
 * [MongoDB Compass](https://www.mongodb.com/products/compass)
 * [Python json](https://docs.python.org/2/library/json.html)
 
-# Approach
-## Creating a MongoDB Database
+## Approach
+### Creating a MongoDB Database
 I looked at installing MongoDB locally. However, as my ReTweeter bot is now running in the cloud, it would make sense to keep the data there too.
  
 I discovered [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - database as a service - hosted and managed by MongoDB in the cloud, and with a free tier providing 512MB storage over a 3 node replica set - ideal for a low data volume educational project. It also has a neat desktop GUI - [MongoDB Compass ](https://www.mongodb.com/products/compass), which makes connecting and reviewing data super easy, as well as showing stats relating to performance etc. However, it's also possible to connect via the Mongo command line.
 
-## Extracting Twitter Data to Json
+### Extracting Twitter Data to Json
 I did not want the availability of the database to compromise the functionality of my TwitterBot, so opted for a batch solution. For each status that is retweeted, I write the Tweet JSON out to a text file. The files are imported and rolled each night. This decouples the TwitterBot functionality from the database availability.
 
-### Python Script Modifications and Issues
+#### Python Script Modifications and Issues
 * After each retweet, I call a new `saveTweetJsonToFile` function. This is wrapped in a try..catch block.
 * I get latest daily file name, based on today's date. This is created if it does not already exist.
 ```python
@@ -47,7 +49,7 @@ def addDatabaseId(tweet_json):
 {"full_text": "Thanks @summerstown182 for adding your event to https://t.co/MioytUa7Vx! #Tooting #Lambeth https://t.co/tvwzTEh5J3", "truncated": false, "is_quote_status": false, "in_reply_to_status_id": null, "id": 960792447633842176, "favorite_count": 0, "contributors": null, "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>", "retweeted": false, "coordinates": null, "entities": {"symbols": [], "user_mentions": [{"indices": [7, 22], "screen_name": "summerstown182", "id": 2319484106, "name": "Geoff Simmons", "id_str": "2319484106"}], "hashtags": [{"indices": [73, 81], "text": "Tooting"}, {"indices": [82, 90], "text": "Lambeth"}], "urls": [{"url": "https://t.co/MioytUa7Vx", "indices": [48, 71], "expanded_url": "http://whatson.tootingdailyprss.co.uk", "display_url": "whatson.tootingdailyprss.co.uk"}], "media": [{"expanded_url": "https://twitter.com/TootingPRSS/status/960792447633842176/photo/1", "sizes": {"large": {"h": 848, "w": 1200, "resize": "fit"}, "small": {"h": 481, "w": 680, "resize": "fit"}, "medium": {"h": 848, "w": 1200, "resize": "fit"}, "thumb": {"h": 150, "w": 150, "resize": "crop"}}, "url": "https://t.co/tvwzTEh5J3", "media_url_https": "https://pbs.twimg.com/media/DVVrSz_X0AAlJ2o.jpg", "id_str": "960792066451296256", "indices": [91, 114], "media_url": "http://pbs.twimg.com/media/DVVrSz_X0AAlJ2o.jpg", "type": "photo", "id": 960792066451296256, "display_url": "pic.twitter.com/tvwzTEh5J3"}]}, "in_reply_to_screen_name": null, "id_str": "960792447633842176", "display_text_range": [0, 90], "retweet_count": 0, "in_reply_to_user_id": null, "favorited": false, "user": {"follow_request_sent": false, "has_extended_profile": false, "profile_use_background_image": true, "time_zone": "London", "id": 1714630165, "default_profile": false, "verified": false, "profile_text_color": "333333", "profile_image_url_https": "https://pbs.twimg.com/profile_images/782657625758498817/Ika0Wio4_normal.jpg", "profile_sidebar_fill_color": "DDEEF6", "is_translator": false, "geo_enabled": true, "entities": {"url": {"urls": [{"url": "https://t.co/uZvcJJgtkZ", "indices": [0, 23], "expanded_url": "http://tootingdailyprss.co.uk", "display_url": "tootingdailyprss.co.uk"}]}, "description": {"urls": []}}, "followers_count": 8127, "protected": false, "id_str": "1714630165", "default_profile_image": false, "listed_count": 287, "lang": "en", "utc_offset": 0, "statuses_count": 28428, "description": "Stay current with #Tooting local news, people, and events. Read blogs, get up-to-the-minute media coverage, and hear your neighbours' voices talk about Tooting.", "friends_count": 1749, "profile_link_color": "0087C5", "profile_image_url": "http://pbs.twimg.com/profile_images/782657625758498817/Ika0Wio4_normal.jpg", "notifications": false, "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000063495894/0dfcd26457c994e6347cd48d837255ee.png", "profile_background_color": "F3F3F4", "profile_banner_url": "https://pbs.twimg.com/profile_banners/1714630165/1490439568", "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000063495894/0dfcd26457c994e6347cd48d837255ee.png", "name": "Tooting Daily PRSS", "is_translation_enabled": false, "profile_background_tile": true, "favourites_count": 22869, "screen_name": "TootingPRSS", "url": "https://t.co/uZvcJJgtkZ", "created_at": "Sat Aug 31 04:50:11 +0000 2013", "contributors_enabled": false, "location": "Tooting, London", "profile_sidebar_border_color": "FFFFFF", "translator_type": "none", "following": true}, "geo": null, "in_reply_to_user_id_str": null, "possibly_sensitive": false, "lang": "en", "_id": "960792447633842176", "created_at": "Tue Feb 06 08:29:04 +0000 2018", "in_reply_to_status_id_str": null, "place": {"country_code": "GB", "url": "https://api.twitter.com/1.1/geo/id/460c5314e8a33c64.json", "country": "United Kingdom", "place_type": "city", "bounding_box": {"type": "Polygon", "coordinates": [[[-0.259465, 51.417277], [-0.127974, 51.417277], [-0.127974, 51.486036], [-0.259465, 51.486036]]]}, "contained_within": [], "full_name": "Wandsworth, London", "attributes": {}, "id": "460c5314e8a33c64", "name": "Wandsworth"}, "extended_entities": {"media": [{"expanded_url": "https://twitter.com/TootingPRSS/status/960792447633842176/photo/1", "sizes": {"large": {"h": 848, "w": 1200, "resize": "fit"}, "small": {"h": 481, "w": 680, "resize": "fit"}, "medium": {"h": 848, "w": 1200, "resize": "fit"}, "thumb": {"h": 150, "w": 150, "resize": "crop"}}, "url": "https://t.co/tvwzTEh5J3", "media_url_https": "https://pbs.twimg.com/media/DVVrSz_X0AAlJ2o.jpg", "id_str": "960792066451296256", "indices": [91, 114], "media_url": "http://pbs.twimg.com/media/DVVrSz_X0AAlJ2o.jpg", "type": "photo", "id": 960792066451296256, "display_url": "pic.twitter.com/tvwzTEh5J3"}]}, "metadata": {"iso_language_code": "en", "result_type": "recent"}}
 ```
 
-## Importing Json into MongoDB
+### Importing Json into MongoDB
 I now have a text file for each day, containing all the data relating to statuses retweeted by my TwitterBot. The next step is to import this data into my MongoDB. For this, I used the [pymongo](https://api.mongodb.com/python/current/) Python/MongoDB library.
 
 * All batch processes should be re-runnable. My `loadTweets.py` script calculates yesterday's start and end time, and deletes any data which may already exist between those times. This allows me to re-run the script safely if there are any problems.
@@ -75,7 +77,7 @@ I now have a text file for each day, containing all the data relating to statuse
             {'$set':{'created_at' : datetime.strptime(doc['created_at'], "%a %b %d %H:%M:%S +0000 %Y")}})
 ```
 
-## Conclusion
+### Conclusion
 I now have a daily batch process, (run via a cron job) which processes my daily json file and uploads it to my MongoDB database. This has given me, though obviously not big data, a reasonable base from which to experiment with MongoDB querying, aggregation and map/reduce.
 
 It's also expanded my Python knowledge in having to overcome various issues as described above - and, as an added bonus,  I've learnt the basics of [MarkDown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) Next step is to create some web pages which will show analyses of the data being recorded by FurzedownTweets - who knows, it may be useful to someone!
